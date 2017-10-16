@@ -1,0 +1,38 @@
+<form [formGroup]="searchForm" (ngSubmit)="searchFlickr(searchForm.value)">
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div class="input-group">
+          <label>Search Fluickr: </label>
+          <input type="search" class="form-control" formControlName="searchFlickr">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid" >
+              <span class="glyphicon glyphicon-search" aria-hidden="true">
+            </span> Search!</button>
+          </span>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</form>
+<br>
+<div [hidden]="!searchInProgress" class="spinner">
+  <div class="double-bounce1"></div>
+  <div class="double-bounce2"></div>
+</div>
+
+<div *ngIf="result">
+  <div class="row">
+    <div *ngFor=" let col of result.photo; let idxCol = index">
+      <div class="gallery">
+        <span class="card-title">{{col.owner}}</span>
+        <a href="{{'https://farm' + col.farm + '.staticflickr.com/' + col.server + '/' + col.id + '_' + col.secret + '_q.jpg'}}"
+          target="_blank">
+                <img src="{{'https://farm' + col.farm + '.staticflickr.com/' + col.server + '/' + col.id + '_' + col.secret + '_q.jpg'}}" ></a>
+        <div class="desc">{{col.title}}</div>
+      </div>
+    </div>
+  </div>
+</div>
