@@ -1,9 +1,9 @@
 export interface Photos {
-    page: number,
-    pages: number,
-    perpage: number,
-    photo: Photo[],
-    total: number
+    page: number;
+    pages: number;
+    perpage: number;
+    photo: Photo[];
+    total: number;
 }
 export interface Photo {
     id: string;
